@@ -34,11 +34,23 @@ PORT=5000
 VERSION=v1
 SURVIVOR_COLLECTION=survivor
 ```
+
+## Installing
+The easier way is run this
+
+```
+go get ./...
+``` 
+
+or you can see the [documentation](https://go.dev/doc/modules/managing-dependencies)
+
 ## Run Application
 
 How to run the application
 
-`go run main.go`
+```
+go run main.go
+```
 
 ## Documentation
 http://localhost:5000/v1/swagger/index.html
