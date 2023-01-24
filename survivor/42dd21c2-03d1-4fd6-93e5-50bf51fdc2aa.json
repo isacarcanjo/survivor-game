@@ -1,0 +1,9 @@
+{
+	"id": "42dd21c2-03d1-4fd6-93e5-50bf51fdc2aa",
+	"name": "Jonh Doe",
+	"gender": "masc",
+	"lat": 21.1058,
+	"lng": -66.14844,
+	"infected": false,
+	"infectedReport": 2
+}

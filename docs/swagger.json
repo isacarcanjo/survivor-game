@@ -1,0 +1,248 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Survivor Game API Docs",
+        "contact": {
+            "name": "Isac Arcanjo",
+            "url": "https://github.com/isacarcanjo"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "host": "localhost:5000",
+    "basePath": "/v1",
+    "paths": {
+        "/survivor": {
+            "post": {
+                "description": "Create survivor",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "survivor"
+                ],
+                "parameters": [
+                    {
+                        "description": "Survivor",
+                        "name": "survivor",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/usecases.CreateSurvivorInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entitys.SurvivorEntity"
+                        }
+                    }
+                }
+            }
+        },
+        "/survivor/closest-survivor/{id}": {
+            "get": {
+                "description": "Get closest survivor",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "survivor"
+                ],
+                "summary": "Get closest survivor",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id survivor",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entitys.SurvivorEntity"
+                        }
+                    }
+                }
+            }
+        },
+        "/survivor/infected/{id}": {
+            "post": {
+                "description": "Report infected survivor",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "survivor"
+                ],
+                "summary": "Report infected survivor",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id survivor",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entitys.SurvivorEntity"
+                        }
+                    }
+                }
+            }
+        },
+        "/survivor/{id}": {
+            "get": {
+                "description": "Get survivor",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "survivor"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id survivor",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entitys.SurvivorEntity"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update survivor",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "survivor"
+                ],
+                "summary": "Update survivor",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id survivor",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Survivor",
+                        "name": "survivor",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/usecases.UpdateSurvivorInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entitys.SurvivorEntity"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "entitys.SurvivorEntity": {
+            "type": "object",
+            "properties": {
+                "gender": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "infected": {
+                    "type": "boolean"
+                },
+                "infectedReport": {
+                    "type": "integer"
+                },
+                "lat": {
+                    "type": "number"
+                },
+                "lng": {
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "usecases.CreateSurvivorInput": {
+            "type": "object",
+            "properties": {
+                "gender": {
+                    "type": "string"
+                },
+                "lat": {
+                    "type": "number"
+                },
+                "lng": {
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "usecases.UpdateSurvivorInput": {
+            "type": "object",
+            "properties": {
+                "gender": {
+                    "type": "string"
+                },
+                "lat": {
+                    "type": "number"
+                },
+                "lng": {
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

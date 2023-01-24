@@ -1,0 +1,162 @@
+basePath: /v1
+definitions:
+  entitys.SurvivorEntity:
+    properties:
+      gender:
+        type: string
+      id:
+        type: string
+      infected:
+        type: boolean
+      infectedReport:
+        type: integer
+      lat:
+        type: number
+      lng:
+        type: number
+      name:
+        type: string
+    type: object
+  usecases.CreateSurvivorInput:
+    properties:
+      gender:
+        type: string
+      lat:
+        type: number
+      lng:
+        type: number
+      name:
+        type: string
+    type: object
+  usecases.UpdateSurvivorInput:
+    properties:
+      gender:
+        type: string
+      lat:
+        type: number
+      lng:
+        type: number
+      name:
+        type: string
+    type: object
+host: localhost:5000
+info:
+  contact:
+    name: Isac Arcanjo
+    url: https://github.com/isacarcanjo
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Survivor Game API Docs
+  version: 1.0.0
+paths:
+  /survivor:
+    post:
+      consumes:
+      - application/json
+      description: Create survivor
+      parameters:
+      - description: Survivor
+        in: body
+        name: survivor
+        required: true
+        schema:
+          $ref: '#/definitions/usecases.CreateSurvivorInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entitys.SurvivorEntity'
+      tags:
+      - survivor
+  /survivor/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get survivor
+      parameters:
+      - description: Id survivor
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entitys.SurvivorEntity'
+      tags:
+      - survivor
+    put:
+      consumes:
+      - application/json
+      description: Update survivor
+      parameters:
+      - description: Id survivor
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Survivor
+        in: body
+        name: survivor
+        required: true
+        schema:
+          $ref: '#/definitions/usecases.UpdateSurvivorInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entitys.SurvivorEntity'
+      summary: Update survivor
+      tags:
+      - survivor
+  /survivor/closest-survivor/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get closest survivor
+      parameters:
+      - description: Id survivor
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entitys.SurvivorEntity'
+      summary: Get closest survivor
+      tags:
+      - survivor
+  /survivor/infected/{id}:
+    post:
+      consumes:
+      - application/json
+      description: Report infected survivor
+      parameters:
+      - description: Id survivor
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entitys.SurvivorEntity'
+      summary: Report infected survivor
+      tags:
+      - survivor
+swagger: "2.0"
